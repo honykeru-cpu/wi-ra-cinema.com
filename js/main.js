@@ -13,13 +13,11 @@ document.addEventListener('keydown', function(e) {
             var el = document.elementFromPoint(x, y);
             if (el) el.click();
             break;
-        case 10009: // GERİ (Return)
+        case 10009: // GERİ TUŞU
             if (frame.style.display === 'block') {
-                // Eğer bir site açıksa onu kapat ve ana menüye dön
                 frame.style.display = 'none';
                 frame.src = "";
             } else {
-                // Ana menüdeyken 2 kez basarsan uygulamadan çık
                 backCount++;
                 if (backCount >= 2) {
                     if(typeof tizen !== 'undefined') tizen.application.getCurrentApplication().exit();
