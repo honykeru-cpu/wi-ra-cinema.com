@@ -1,4 +1,4 @@
-var x = 960, y = 540, speed = 85, backCount = 0;
+var x = 960, y = 540, speed = 80, backCount = 0;
 
 function loadSite(url) {
     document.getElementById('main-grid').style.display = 'none';
@@ -16,21 +16,23 @@ document.addEventListener('keydown', function(e) {
         case 39: x += speed; break; // Sağ
         case 38: y -= speed; break; // Üst
         case 40: y += speed; break; // Alt
-        case 13: // Enter (Seç)
+        case 13: // Tamam
             var el = document.elementFromPoint(x, y);
             if (el) el.click();
             break;
-        case 10009: // Geri (Geri Dön)
+        case 10009: // GERİ TUŞU
             if (frame.style.display === 'block') {
-                frame.style.display = 'none';
+                // Sitedeyken 1 kez basınca ANA MENÜYE DÖN
                 document.getElementById('main-grid').style.display = 'grid';
-                frame.src = ""; // Kaynağı temizle
+                frame.style.display = 'none';
+                frame.src = "";
             } else {
+                // Ana menüdeyken hızlıca 2 kez basınca ÇIKIŞ YAP
                 backCount++;
-                if (backCount >= 3) {
+                if (backCount >= 2) {
                     if(typeof tizen !== 'undefined') tizen.application.getCurrentApplication().exit();
                 }
-                setTimeout(function() { backCount = 0; }, 2000);
+                setTimeout(function() { backCount = 0; }, 1000);
             }
             break;
     }
