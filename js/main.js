@@ -20,7 +20,7 @@ document.addEventListener('keydown', function(e) {
             var el = document.elementFromPoint(x, y);
             if (el) el.click();
             break;
-        case 10009: // Geri Tuşu
+        case 10009: // Geri (Return)
             if (frame.style.display === 'block') {
                 frame.style.display = 'none';
                 document.getElementById('main-grid').style.display = 'grid';
