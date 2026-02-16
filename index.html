@@ -3,30 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <title>Wi-ra Cinema Cloud</title>
-    <style>
-        /* CSS GÖRÜNÜM AYARLARI */
-        body, html { margin: 0; padding: 0; background: #111; width: 1920px; height: 1080px; overflow: hidden; font-family: 'Segoe UI', sans-serif; }
-        #app-container { width: 1920px; height: 1080px; border: 12px solid #ffcc00; box-sizing: border-box; position: relative; display: flex; flex-direction: column; }
-        
-        /* Üst Bar ve Menü Yapısı */
-        #top-bar { height: 80px; background: #ffcc00; display: flex; align-items: center; padding: 0 40px; font-size: 35px; font-weight: bold; color: #000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        
-        /* Kutu (Grid) Düzeni */
-        #main-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 60px; height: 100%; align-content: center; }
-        .nav-card { background: #222; border: 5px solid #444; border-radius: 20px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; transition: 0.3s; cursor: pointer; }
-        .nav-card:hover { border-color: #ffcc00; background: #333; transform: scale(1.05); }
-        .nav-card i { font-size: 80px; margin-bottom: 20px; }
-        .nav-card span { font-size: 30px; font-weight: bold; }
-
-        /* İçerik Penceresi (Gizli Başlar) */
-        #site-frame { width: 100%; height: 975px; border: none; background: #fff; display: none; }
-        
-        /* Kırmızı İmleç */
-        #cursor { width: 45px; height: 45px; background: red; border: 3px solid white; border-radius: 50%; position: absolute; z-index: 999999; pointer-events: none; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app-container">
         <div id="top-bar">Wi-ra Cinema Cloud</div>
         
-        <div id
+        <div id="main-grid">
+            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed')">
+                <span>YOUTUBE</span>
+            </div>
+            <div class="nav-card" onclick="loadSite('https://dizipal.com')">
+                <span>DİZİPAL</span>
+            </div>
+        </div>
+
+        <iframe id="site-frame" src=""></iframe>
+    </div>
+    <div id="cursor"></div>
+
+    <script>
+        // Motor Başlatma Mantığı
+        var adBlockerInstance = null;
+        var Module = {
+            onRuntimeInitialized: function() {
+                try {
+                    adBlockerInstance = new Module.AdBlocker();
+                    console.log("Motor Hazır.");
+                } catch(e) { console.log("Yükleniyor..."); }
+            }
+        };
+    </script>
+    <script src="js/adblock.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
