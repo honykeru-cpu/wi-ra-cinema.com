@@ -1,15 +1,15 @@
 var x = 960, y = 540, speed = 80, backCount = 0;
 
 function loadSite(url) {
-    document.getElementById('main-grid').style.display = 'none';
+    var wrapper = document.getElementById('frame-wrapper');
     var frame = document.getElementById('site-frame');
-    frame.style.display = 'block';
+    wrapper.style.display = 'block';
     frame.src = url;
 }
 
 document.addEventListener('keydown', function(e) {
-    var frame = document.getElementById('site-frame');
     var cursor = document.getElementById('cursor');
+    var wrapper = document.getElementById('frame-wrapper');
 
     switch(e.keyCode) {
         case 37: x -= speed; break; // Sol
@@ -21,13 +21,12 @@ document.addEventListener('keydown', function(e) {
             if (el) el.click();
             break;
         case 10009: // GERİ TUŞU
-            if (frame.style.display === 'block') {
-                // Sitedeyken 1 kez basınca ANA MENÜYE DÖN
-                document.getElementById('main-grid').style.display = 'grid';
-                frame.style.display = 'none';
-                frame.src = "";
+            if (wrapper.style.display === 'block') {
+                // 1. Basış: Siteden çık, menüye dön
+                wrapper.style.display = 'none';
+                document.getElementById('site-frame').src = "";
             } else {
-                // Ana menüdeyken hızlıca 2 kez basınca ÇIKIŞ YAP
+                // 2. Basış: Menüdeyken çıkış yap
                 backCount++;
                 if (backCount >= 2) {
                     if(typeof tizen !== 'undefined') tizen.application.getCurrentApplication().exit();
