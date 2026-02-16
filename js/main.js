@@ -16,15 +16,15 @@ document.addEventListener('keydown', function(e) {
         case 39: x += speed; break; // Sağ
         case 38: y -= speed; break; // Üst
         case 40: y += speed; break; // Alt
-        case 13: // Tamam (Enter)
+        case 13: // Enter (Seç)
             var el = document.elementFromPoint(x, y);
             if (el) el.click();
             break;
-        case 10009: // Geri (Return)
+        case 10009: // Geri (Geri Dön)
             if (frame.style.display === 'block') {
                 frame.style.display = 'none';
                 document.getElementById('main-grid').style.display = 'grid';
-                frame.src = "";
+                frame.src = ""; // Kaynağı temizle
             } else {
                 backCount++;
                 if (backCount >= 3) {
