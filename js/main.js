@@ -1,4 +1,4 @@
-var x = 960, y = 540, speed = 80, backCount = 0;
+var x = 960, y = 540, speed = 85, backCount = 0;
 
 document.addEventListener('keydown', function(e) {
     var cursor = document.getElementById('cursor');
@@ -8,12 +8,12 @@ document.addEventListener('keydown', function(e) {
         case 39: x += speed; break; // Sağ
         case 38: y -= speed; break; // Üst
         case 40: y += speed; break; // Alt
-        case 13: // Tamam (Tıkla)
+        case 13: // TAMAM (Tıkla)
             var el = document.elementFromPoint(x, y);
             if (el) el.click();
             break;
         case 10009: // GERİ TUŞU
-            // Eğer ana menü (GitHub) dışındaysak ana menüye dön
+            // Eğer ana menüde (GitHub sayfasında) değilsek, ana menüye dön
             if (!window.location.href.includes("github.io")) {
                 window.location.href = "https://honykeru-cpu.github.io/wi-ra-cinema.com/index.html";
             } else {
