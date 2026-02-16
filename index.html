@@ -16,33 +16,35 @@
             <div class="nav-card" onclick="loadSite('https://www.youtube.com/seksendort')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="Youtube">
             </div>
+            
             <div class="nav-card" onclick="loadSite('https://dizipal1539.com/')">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6A6R" alt="Dizipal">
             </div>
+            
             <div class="nav-card" onclick="loadSite('https://www.hdfilmcehennemi.com')">
                 <img src="https://www.hdfilmcehennemi.com/static/logo.png" alt="HDFilm">
             </div>
+            
             <div class="nav-card" onclick="loadSite('https://www.dizibox.live/')">
-                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Vizyon">
+                <img src="https://www.dizibox.live/wp-content/themes/dizibox/assets/images/logo.png" alt="Dizibox">
             </div>
         </div>
 
-        <iframe id="site-frame" src=""></iframe>
+        <div id="frame-wrapper">
+             <iframe id="site-frame" src=""></iframe>
+        </div>
     </div>
     <div id="cursor"></div>
 
     <script>
         var adBlockerInstance = null;
         var Module = { onRuntimeInitialized: function() { adBlockerInstance = new Module.AdBlocker(); } };
+        
+        // Ana Sayfa düğmesine basınca siteyi kapatır ve menüyü açar
         function goHome() {
-            document.getElementById('site-frame').style.display = 'none';
-            document.getElementById('main-grid').style.display = 'grid';
+            document.getElementById('frame-wrapper').style.display = 'none';
             document.getElementById('site-frame').src = "";
         }
     </script>
     <script src="js/adblock.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
-
-
+    <script src="js/main
