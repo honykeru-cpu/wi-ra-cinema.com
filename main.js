@@ -1,0 +1,46 @@
+// AdBlocker modülünü burada başlatıyoruz (scope sorunu çözüldü)
+var adBlockerInstance = null;
+
+var Module = {
+    onRuntimeInitialized: function() {
+        try {
+            adBlockerInstance = new Module.AdBlocker();
+            console.log("AdBlock Motoru başarıyla başlatıldı.");
+        } catch (e) {
+            console.error("AdBlocker başlatılamadı:", e);
+        }
+    }
+};
+
+function openSite(url) {
+    if (!url) return;
+
+    // Reklam kontrolü (opsiyonel chaining ile güvenli)
+    if (adBlockerInstance?.isAds?.(url)) {
+        alert("Bu URL reklam veya engellenmiş içerik içeriyor.");
+        return;
+    }
+
+    const frame = document.getElementById('site-frame');
+    const bar   = document.getElementById('top-bar');
+
+    frame.src = url.startsWith('http') ? url : 'https://' + url;
+    frame.style.display = 'block';
+    bar.style.display = 'none';
+
+    // Focus'u iframe'e ver (TV kumandası için önemli)
+    setTimeout(() => frame.contentWindow.focus(), 800);
+}
+
+function closeSite() {
+    const frame = document.getElementById('site-frame');
+    const bar   = document.getElementById('top-bar');
+
+    frame.src = 'about:blank';
+    frame.style.display = 'none';
+    bar.style.display = 'flex';
+}
+
+function goBack() {
+    const frame = document.getElementById('site-frame');
+    if (frame.contentWindow.history.length > 1
