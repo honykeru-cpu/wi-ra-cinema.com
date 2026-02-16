@@ -16,18 +16,20 @@ document.addEventListener('keydown', function(e) {
         case 39: x += speed; break; // Sağ
         case 38: y -= speed; break; // Üst
         case 40: y += speed; break; // Alt
-        case 13: // ENTER
+        case 13: // Tamam (Enter)
             var el = document.elementFromPoint(x, y);
             if (el) el.click();
             break;
-        case 10009: // GERİ
+        case 10009: // Geri Tuşu
             if (frame.style.display === 'block') {
                 frame.style.display = 'none';
                 document.getElementById('main-grid').style.display = 'grid';
                 frame.src = "";
             } else {
                 backCount++;
-                if (backCount >= 3) tizen.application.getCurrentApplication().exit();
+                if (backCount >= 3) {
+                    if(typeof tizen !== 'undefined') tizen.application.getCurrentApplication().exit();
+                }
                 setTimeout(function() { backCount = 0; }, 2000);
             }
             break;
