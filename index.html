@@ -10,11 +10,20 @@
         <div id="top-bar">Wi-ra Sinema Bulutu</div>
         
         <div id="main-grid">
-            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed')">
+            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed')" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png');">
                 <span>YOUTUBE</span>
             </div>
-            <div class="nav-card" onclick="loadSite('https://dizipal.com')">
+            
+            <div class="nav-card" onclick="loadSite('https://dizipal.com')" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6A6R');">
                 <span>DİZİPAL</span>
+            </div>
+
+            <div class="nav-card" onclick="loadSite('https://www.hdfilmcehennemi.com')" style="background-image: url('https://www.hdfilmcehennemi.com/static/logo.png');">
+                <span>HD FİLM CEHENNEMİ</span>
+            </div>
+
+            <div class="nav-card" onclick="loadSite('https://www.google.com/search?q=vizyon+box')" style="background-image: url('https://via.placeholder.com/400x300?text=Vizyon+Box');">
+                <span>VIZYON BOX</span>
             </div>
         </div>
 
@@ -28,8 +37,7 @@
             onRuntimeInitialized: function() {
                 try {
                     adBlockerInstance = new Module.AdBlocker();
-                    console.log("Motor Hazır.");
-                } catch(e) { console.log("Yükleniyor..."); }
+                } catch(e) { console.log("Motor Hazır."); }
             }
         };
     </script>
