@@ -7,23 +7,23 @@
 </head>
 <body>
     <div id="app-container">
-        <div id="top-bar">Wi-ra Sinema Bulutu</div>
+        <div id="top-bar">
+            <div class="logo-area">🟡 Wi-ra Sinema Bulutu</div>
+            <button class="home-btn" onclick="goHome()">ANA SAYFA</button>
+        </div>
         
         <div id="main-grid">
-            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed')" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png');">
-                <span>YOUTUBE</span>
+            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="Youtube">
             </div>
-            
-            <div class="nav-card" onclick="loadSite('https://dizipal.com')" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6A6R');">
-                <span>DİZİPAL</span>
+            <div class="nav-card" onclick="loadSite('https://dizipal.com')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6A6R" alt="Dizipal">
             </div>
-
-            <div class="nav-card" onclick="loadSite('https://www.hdfilmcehennemi.com')" style="background-image: url('https://www.hdfilmcehennemi.com/static/logo.png');">
-                <span>HD FİLM CEHENNEMİ</span>
+            <div class="nav-card" onclick="loadSite('https://www.hdfilmcehennemi.com')">
+                <img src="https://www.hdfilmcehennemi.com/static/logo.png" alt="HDFilm">
             </div>
-
-            <div class="nav-card" onclick="loadSite('https://www.google.com/search?q=vizyon+box')" style="background-image: url('https://via.placeholder.com/400x300?text=Vizyon+Box');">
-                <span>VIZYON BOX</span>
+            <div class="nav-card" onclick="loadSite('https://www.google.com')">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Vizyon">
             </div>
         </div>
 
@@ -33,13 +33,12 @@
 
     <script>
         var adBlockerInstance = null;
-        var Module = {
-            onRuntimeInitialized: function() {
-                try {
-                    adBlockerInstance = new Module.AdBlocker();
-                } catch(e) { console.log("Motor Hazır."); }
-            }
-        };
+        var Module = { onRuntimeInitialized: function() { adBlockerInstance = new Module.AdBlocker(); } };
+        function goHome() {
+            document.getElementById('site-frame').style.display = 'none';
+            document.getElementById('main-grid').style.display = 'grid';
+            document.getElementById('site-frame').src = "";
+        }
     </script>
     <script src="js/adblock.js"></script>
     <script src="js/main.js"></script>
