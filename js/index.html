@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiziPal TV</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="top-bar">
+        <h1>DiziPal TV</h1>
+        <input type="text" id="url-input" placeholder="Site URL'sini girin..." />
+        <button onclick="openSite(document.getElementById('url-input').value)">Aç</button>
+        <button onclick="closeSite()">Kapat</button>
+        <button onclick="goBack()">Geri</button>
+    </div>
+
+    <iframe id="site-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+
+    <script src="js/adblock.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
