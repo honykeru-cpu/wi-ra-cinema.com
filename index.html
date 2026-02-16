@@ -9,11 +9,11 @@
     <div id="app-container">
         <div id="top-bar">
             <div class="logo-area">🟡 Wi-ra Sinema Bulutu</div>
-            <button class="home-btn" onclick="location.href='index.html'">ANA SAYFA</button>
+            <button class="home-btn" onclick="goHome()">ANA SAYFA</button>
         </div>
         
         <div id="main-grid">
-            <div class="nav-card" onclick="loadSite('https://www.youtube.com/seksendort')">
+            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed/videoseries?list=PLseksendort')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="Youtube">
             </div>
             <div class="nav-card" onclick="loadSite('https://dizipal1539.com/')">
@@ -26,7 +26,10 @@
                 <img src="https://www.dizibox.live/wp-content/themes/dizibox/assets/images/logo.png" alt="Dizibox">
             </div>
         </div>
+
+        <iframe id="site-frame" src="" sandbox="allow-forms allow-scripts allow-same-origin allow-presentation"></iframe>
     </div>
+
     <div id="cursor"></div>
 
     <script>
@@ -34,7 +37,15 @@
         var Module = { onRuntimeInitialized: function() { adBlockerInstance = new Module.AdBlocker(); } };
         
         function loadSite(url) {
-            window.location.href = url; // Siteyi doğrudan açar
+            var frame = document.getElementById('site-frame');
+            frame.src = url;
+            frame.style.display = 'block'; // Siteyi görünür yap
+        }
+
+        function goHome() {
+            var frame = document.getElementById('site-frame');
+            frame.style.display = 'none';
+            frame.src = ""; // Siteyi kapat
         }
     </script>
     <script src="js/adblock.js"></script>
