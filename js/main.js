@@ -1,46 +1,30 @@
-// AdBlocker modülünü burada başlatıyoruz (scope sorunu çözüldü)
-var adBlockerInstance = null;
+var x = 960, y = 540, speed = 85, backCount = 0;
 
-var Module = {
-    onRuntimeInitialized: function() {
-        try {
-            adBlockerInstance = new Module.AdBlocker();
-            console.log("AdBlock Motoru başarıyla başlatıldı.");
-        } catch (e) {
-            console.error("AdBlocker başlatılamadı:", e);
-        }
+document.addEventListener('keydown', function(e) {
+    var frame = document.getElementById('site-frame');
+    var cursor = document.getElementById('cursor');
+
+    switch(e.keyCode) {
+        case 37: x -= speed; break; // Sol
+        case 39: x += speed; break; // Sağ
+        case 38: y -= speed; break; // Üst
+        case 40: y += speed; break; // Alt
+        case 13: // ENTER (Tıklama)
+            var el = document.elementFromPoint(x, y);
+            if (el) { el.click(); }
+            break;
+        case 10009: // GERİ TUŞU
+            backCount++;
+            if (backCount === 1) {
+                frame.contentWindow.history.back();
+            } else if (backCount >= 3) {
+                tizen.application.getCurrentApplication().exit();
+            }
+            setTimeout(function() { backCount = 0; }, 2000);
+            break;
     }
-};
-
-function openSite(url) {
-    if (!url) return;
-
-    // Reklam kontrolü (opsiyonel chaining ile güvenli)
-    if (adBlockerInstance?.isAds?.(url)) {
-        alert("Bu URL reklam veya engellenmiş içerik içeriyor.");
-        return;
-    }
-
-    const frame = document.getElementById('site-frame');
-    const bar   = document.getElementById('top-bar');
-
-    frame.src = url.startsWith('http') ? url : 'https://' + url;
-    frame.style.display = 'block';
-    bar.style.display = 'none';
-
-    // Focus'u iframe'e ver (TV kumandası için önemli)
-    setTimeout(() => frame.contentWindow.focus(), 800);
-}
-
-function closeSite() {
-    const frame = document.getElementById('site-frame');
-    const bar   = document.getElementById('top-bar');
-
-    frame.src = 'about:blank';
-    frame.style.display = 'none';
-    bar.style.display = 'flex';
-}
-
-function goBack() {
-    const frame = document.getElementById('site-frame');
-    if (frame.contentWindow.history.length > 1
+    x = Math.max(20, Math.min(1900, x));
+    y = Math.max(20, Math.min(1060, y));
+    cursor.style.left = x + 'px';
+    cursor.style.top = y + 'px';
+});
