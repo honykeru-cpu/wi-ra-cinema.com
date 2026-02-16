@@ -13,21 +13,24 @@
         </div>
         
         <div id="main-grid">
-            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed/videoseries?list=PLseksendort')">
+            <div class="nav-card" onclick="loadSite('https://www.youtube.com/embed?listType=user_uploads&list=seksendort')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="Youtube">
             </div>
+            
             <div class="nav-card" onclick="loadSite('https://dizipal1539.com/')">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6A6R" alt="Dizipal">
             </div>
+            
             <div class="nav-card" onclick="loadSite('https://www.hdfilmcehennemi.com')">
                 <img src="https://www.hdfilmcehennemi.com/static/logo.png" alt="HDFilm">
             </div>
+            
             <div class="nav-card" onclick="loadSite('https://www.dizibox.live/')">
                 <img src="https://www.dizibox.live/wp-content/themes/dizibox/assets/images/logo.png" alt="Dizibox">
             </div>
         </div>
 
-        <iframe id="site-frame" src="" sandbox="allow-forms allow-scripts allow-same-origin allow-presentation"></iframe>
+        <iframe id="site-frame" src="" sandbox="allow-forms allow-scripts allow-same-origin allow-popups"></iframe>
     </div>
 
     <div id="cursor"></div>
@@ -39,13 +42,13 @@
         function loadSite(url) {
             var frame = document.getElementById('site-frame');
             frame.src = url;
-            frame.style.display = 'block'; // Siteyi görünür yap
+            frame.style.display = 'block'; 
         }
 
         function goHome() {
             var frame = document.getElementById('site-frame');
             frame.style.display = 'none';
-            frame.src = ""; // Siteyi kapat
+            frame.src = ""; 
         }
     </script>
     <script src="js/adblock.js"></script>
