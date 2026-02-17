@@ -8,29 +8,36 @@
 <body>
     <div id="custom-cursor"></div>
 
-    <iframe id="site-frame" src="" style="display:none; width:100%; height:100vh; border:none; position:fixed; top:0; left:0; z-index:999;"></iframe>
+    <iframe id="site-frame" src="" style="display:none;"></iframe>
 
     <div id="app-container">
-        <aside id="sidebar">
+        <header id="top-bar">
             <div class="logo">Wi-Ra Cinema</div>
             <nav>
-                <ul>
-                    <li><a href="javascript:void(0)" onclick="openInApp('https://www.youtube.com')">YouTube</a></li>
-                    <li><a href="javascript:void(0)" onclick="openInApp('SITE_URL_DIZIPAL')">Dizipal</a></li>
-                </ul>
+                <a href="javascript:void(0)" onclick="openInApp('https://www.youtube.com')">YouTube</a>
+                <a href="javascript:void(0)" onclick="openInApp('https://dizipal.com')">Dizipal</a>
+                <a href="javascript:void(0)" onclick="openInApp('https://hdfilmcehennemi.com')">HD Film Cehennemi</a>
+                <a href="javascript:void(0)" onclick="openInApp('https://dizibox.com')">Dizibox</a>
             </nav>
-        </aside>
+        </header>
 
         <main id="main-content">
-            <h1 class="header-title">Anasayfa</h1>
             <div class="site-grid">
                 <div class="site-card" onclick="openInApp('https://www.youtube.com')">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png">
                     <p>YouTube</p>
                 </div>
-                <div class="site-card" onclick="openInApp('SITE_URL_DIZIPAL')">
+                <div class="site-card" onclick="openInApp('https://dizipal.com')">
                     <img src="https://via.placeholder.com/150?text=DIZIPAL">
                     <p>Dizipal</p>
+                </div>
+                <div class="site-card" onclick="openInApp('https://hdfilmcehennemi.com')">
+                    <img src="https://via.placeholder.com/150?text=HD+FILM">
+                    <p>HD Film Cehennemi</p>
+                </div>
+                <div class="site-card" onclick="openInApp('https://dizibox.com')">
+                    <img src="https://via.placeholder.com/150?text=DIZIBOX">
+                    <p>Dizibox</p>
                 </div>
             </div>
         </main>
@@ -39,12 +46,11 @@
     <script src="js/adblock.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Uygulama içinde açma fonksiyonu
         function openInApp(url) {
             const frame = document.getElementById('site-frame');
             frame.src = url;
             frame.style.display = 'block';
-            console.log("Site uygulama içinde açıldı: " + url);
+            document.getElementById('app-container').style.display = 'none';
         }
     </script>
 </body>
