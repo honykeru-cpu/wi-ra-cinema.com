@@ -2,133 +2,44 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>WiRa Cinema TV</title>
-    <script src="$WEBAPIS/webapis/webapis.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <style>
-        /* Odaklanan elementler için Turkuaz çerçeve */
-        :focus {
-            outline: 3px solid #00e0ff !important; /* Turkuaz rengi */
-            outline-offset: 4px; /* Çerçeve ile öğe arasına boşluk */
-            box-shadow: 0 0 10px rgba(0, 224, 255, 0.4); /* Hafif parlama */
-            transition: all 0.2s ease-in-out; /* Yumuşak geçiş */
-        }
-        /* Menü veya butonlara özel odaklama */
-        button:focus, a:focus, li:focus {
-            transform: scale(1.02); /* Hafif büyüme */
-        }
-    </style>
 </head>
 <body>
     <div id="app-container">
         <aside id="sidebar">
-            <div class="logo">WiRa Cinema TV</div>
+            <div class="logo">WiRa Cinema</div>
             <nav>
                 <ul>
-                    <li><a href="#" tabindex="0">Anasayfa</a></li>
-                    <li><a href="#" tabindex="0">Filmler</a></li>
-                    <li><a href="#" tabindex="0">Diziler</a></li>
-                    <li><a href="#" tabindex="0">Kitaplık</a></li>
-                    <li><a href="#" tabindex="0">Ayarlar</a></li>
+                    <li><a href="SITE_URL_1" tabindex="0">📺 Diziler</a></li>
+                    <li><a href="SITE_URL_2" tabindex="0">🎬 Filmler</a></li>
+                    <li><a href="SITE_URL_3" tabindex="0">📞 Dialer</a></li>
+                    <li><a href="SITE_URL_4" tabindex="0">📚 Kitaplık</a></li>
                 </ul>
             </nav>
         </aside>
 
         <main id="main-content">
-            <section id="hero-section" style="background-image: url('https://image.tmdb.org/t/p/w1280/8Vt6mWEReoyUjHjhrJoxmX0fTzI.jpg');">
-                <div id="hero-details">
-                    <div class="title">Çok Yukarı: Yarar Ekspresi</div>
-                    <div class="description">Genç ve dahi bir yazar, eski bir dostunun kayıp romanını araştırırken, kendisini karmaşık bir entrika ağının içinde bulur.</div>
-                    <div class="buttons">
-                        <button tabindex="0">Şimdi İzle</button>
-                        <button tabindex="0">Listeme Ekle</button>
-                    </div>
+            <header id="hero">
+                <div class="hero-text">
+                    <h1>Keyif Başlıyor</h1>
+                    <p>4 Farklı platform, tek bir uygulama. Seçimini yap ve izlemeye başla.</p>
                 </div>
-            </section>
+            </header>
 
-            <section class="category-section">
-                <div class="category-title">Trend Filmler</div>
-                <div class="movie-grid">
-                    <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/oKSRgO933lH0Xk6zB61J5uVf0qg.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 1</div>
-                    </a>
-                    <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/c7fVd5tB909p3tBqG8Q2tL10U3z.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 2</div>
-                    </a>
-                    <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/m8R8F4ZfL6h6K4jN0q1z0B8Y71x.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 3</div>
-                    </a>
-                    <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/sYjS7v07hQjR7g0y6b2N7z0t1u0.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 4</div>
-                    </a>
-                    <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/7aQY1hJ5X1sVf1fWf3bWf2b1d1.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 5</div>
-                    </a>
-                    </div>
-            </section>
-            
-            <section class="category-section">
-                <div class="category-title">Önerilenler</div>
-                <div class="movie-grid">
-                     <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/y0l42ZfS0lW5lD1J1c1t1g1c1g1c1g1.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 6</div>
-                    </a>
-                    <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/a3Wd3F3e4e4e4e4e4e4e4e4e4e4e4e4.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 7</div>
-                    </a>
-                    <a href="#" class="movie-card" tabindex="0">
-                        <img src="https://image.tmdb.org/t/p/w200/b5X5c5d5e5e5e5e5e5e5e5e5e5e5e5e.jpg" alt="Film Adı">
-                        <div class="movie-title">Film Adı 8</div>
-                    </a>
+            <div class="site-grid">
+                <a href="SITE_URL_1" class="site-card" tabindex="0">
+                    <div class="card-image" style="background-image: url('https://via.placeholder.com/300x150/E50914/FFFFFF?text=DIZILER');"></div>
+                    <div class="card-title">Dizi Platformu</div>
+                </a>
+                <a href="SITE_URL_2" class="site-card" tabindex="0">
+                    <div class="card-image" style="background-image: url('https://via.placeholder.com/300x150/00E0FF/000000?text=FILMLER');"></div>
+                    <div class="card-title">Film Platformu</div>
+                </a>
                 </div>
-            </section>
-
-            <section id="detail-page" style="display:none;">
-                <div id="detail-page-container">
-                    <div id="detail-left">
-                        <img src="https://image.tmdb.org/t/p/w500/8Vt6mWEReoyUjHjhrJoxmX0fTzI.jpg" alt="Poster" class="poster">
-                        <div class="action-buttons">
-                            <button class="play-button" tabindex="0">Oynat</button>
-                            <button class="list-button" tabindex="0">Listeme Ekle</button>
-                        </div>
-                    </div>
-                    <div id="detail-right">
-                        <div class="movie-title">Netflix: ÇOK YUKARIDA</div>
-                        <div class="tags">
-                            <span>2024</span>
-                            <span>Aksiyon</span>
-                            <span>Gerilim</span>
-                        </div>
-                        <div class="description">
-                            Genç ve dahi bir yazar, eski bir dostunun kayıp romanını araştırırken, kendisini karmaşık bir entrika ağının içinde bulur. Her adımda sırlar perdesi aralanırken, gerçeğin peşinde çıktığı bu yolculukta kendi geçmişiyle de yüzleşmek zorunda kalır. Nefes kesen kovalamacalar ve beklenmedik dönüşlerle dolu bir hikaye.
-                        </div>
-                        <div class="related-content">
-                            <div class="related-title">Benzer İçerikler</div>
-                            <div class="movie-grid">
-                                <a href="#" class="movie-card" tabindex="0">
-                                    <img src="https://image.tmdb.org/t/p/w200/rXQ8oB3rD1XgN4cQ4H4c4X4c4H4c4H4c.jpg" alt="Film">
-                                    <div class="movie-title">Benzer Film 1</div>
-                                </a>
-                                <a href="#" class="movie-card" tabindex="0">
-                                    <img src="https://image.tmdb.org/t/p/w200/q2Z2s2T2R2e2z2c2g2x2v2b2n2m2k2j2.jpg" alt="Film">
-                                    <div class="movie-title">Benzer Film 2</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
     </div>
-
     <script src="js/adblock.js"></script>
     <script src="js/main.js"></script>
 </body>
+</html>
