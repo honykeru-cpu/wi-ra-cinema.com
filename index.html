@@ -6,15 +6,17 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-    <div id="custom-cursor"></div> <div id="app-container">
+    <div id="custom-cursor"></div>
+
+    <iframe id="site-frame" src="" style="display:none; width:100%; height:100vh; border:none; position:fixed; top:0; left:0; z-index:999;"></iframe>
+
+    <div id="app-container">
         <aside id="sidebar">
             <div class="logo">Wi-Ra Cinema</div>
             <nav>
                 <ul>
-                    <li><a href="https://www.youtube.com">YouTube</a></li>
-                    <li><a href="SITE_URL_DIZIPAL">Dizipal</a></li>
-                    <li><a href="SITE_URL_HDFILM">HD Film</a></li>
-                    <li><a href="SITE_URL_DIZIBOX">Dizibox</a></li>
+                    <li><a href="javascript:void(0)" onclick="openInApp('https://www.youtube.com')">YouTube</a></li>
+                    <li><a href="javascript:void(0)" onclick="openInApp('SITE_URL_DIZIPAL')">Dizipal</a></li>
                 </ul>
             </nav>
         </aside>
@@ -22,27 +24,28 @@
         <main id="main-content">
             <h1 class="header-title">Anasayfa</h1>
             <div class="site-grid">
-                <a href="https://www.youtube.com" class="site-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube">
+                <div class="site-card" onclick="openInApp('https://www.youtube.com')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png">
                     <p>YouTube</p>
-                </a>
-                <a href="SITE_URL_DIZIPAL" class="site-card">
-                    <img src="https://via.placeholder.com/150/FFD700/000000?text=DIZIPAL" alt="Dizipal">
+                </div>
+                <div class="site-card" onclick="openInApp('SITE_URL_DIZIPAL')">
+                    <img src="https://via.placeholder.com/150?text=DIZIPAL">
                     <p>Dizipal</p>
-                </a>
-                <a href="SITE_URL_HDFILM" class="site-card">
-                    <img src="https://via.placeholder.com/150/00E0FF/000000?text=HD+FILM" alt="HD Film">
-                    <p>HD Film</p>
-                </a>
-                <a href="SITE_URL_DIZIBOX" class="site-card">
-                    <img src="https://via.placeholder.com/150/E50914/FFFFFF?text=DIZIBOX" alt="Dizibox">
-                    <p>Dizibox</p>
-                </a>
+                </div>
             </div>
         </main>
     </div>
 
     <script src="js/adblock.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Uygulama içinde açma fonksiyonu
+        function openInApp(url) {
+            const frame = document.getElementById('site-frame');
+            frame.src = url;
+            frame.style.display = 'block';
+            console.log("Site uygulama içinde açıldı: " + url);
+        }
+    </script>
 </body>
 </html>
