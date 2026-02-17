@@ -9,15 +9,17 @@ window.onload = function() {
     });
 
     window.addEventListener('keydown', (e) => {
-        if (e.keyCode === 10009) { // Back Key
+        if (e.keyCode === 10009) { // Geri Tuşu
             const frame = document.getElementById('site-frame');
             if (frame.style.display === 'block') {
-                frame.style.display = 'none'; // Gömülü pencereyi kapat
+                frame.style.display = 'none';
                 frame.src = "";
-                document.getElementById('app-container').style.display = 'flex';
+                document.getElementById('app-container').style.display = 'block';
             } else {
                 tizen.application.getCurrentApplication().exit();
             }
         }
     });
+
+    if (typeof initAdBlocker === "function") initAdBlocker();
 };
