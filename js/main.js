@@ -1,46 +1,37 @@
-// Tizen Tarayıcı Modu Aktif
-var x = 960, y = 540, speed = 85, backCount = 0;
+window.onload = function() {
+    // 1. Kumanda tuşlarını TV sistemine tanıt (Register)
+    const keysToRegister = ["Left", "Right", "Up", "Down", "Enter", "Return"];
+    keysToRegister.forEach(key => {
+        try {
+            tizen.tvinputdevice.registerKey(key);
+            console.log(`Kumanda tuşu kaydedildi: ${key}`);
+        } catch (e) {
+            console.warn(`Kumanda tuşu kaydedilemedi ${key}:`, e);
+        }
+    });
 
-// İmleci her sayfada yeniden oluştur (Eğer sayfa değişirse)
-function createCursor() {
-    if (!document.getElementById('cursor')) {
-        var c = document.createElement('div');
-        c.id = 'cursor';
-        c.style.cssText = "width:60px; height:60px; background:rgba(255,0,0,0.85); border:4px solid white; border-radius:50%; position:absolute; z-index:999999; pointer-events:none; left:"+x+"px; top:"+y+"px; box-shadow: 0 0 25px red;";
-        document.body.appendChild(c);
+    // 2. Reklam engelleyiciyi başlat (adblock.js içindeki fonksiyon)
+    if (typeof initAdBlocker === "function") {
+        initAdBlocker();
+    } else {
+        console.warn("initAdBlocker fonksiyonu bulunamadı, reklam engelleme aktif olmayabilir.");
     }
-}
 
-document.addEventListener('keydown', function(e) {
-    createCursor(); // İmleç yoksa oluştur
-    var cursor = document.getElementById('cursor');
+    // 3. Geri tuşu ile uygulamadan tam çıkış
+    window.addEventListener('keydown', function(e) {
+        if (e.keyCode === 10009) { // Geri tuşu keyCode'u
+            console.log("Uygulama kapatılıyor...");
+            tizen.application.getCurrentApplication().exit();
+        }
+    });
 
-    switch(e.keyCode) {
-        case 37: x -= speed; break; // Sol
-        case 39: x += speed; break; // Sağ
-        case 38: y -= speed; break; // Üst
-        case 40: y += speed; break; // Alt
-        case 13: // ENTER (Tıkla)
-            var el = document.elementFromPoint(x, y);
-            if (el) el.click();
-            break;
-        case 10009: // GERİ TUŞU
-            if (window.location.href.includes("github.io")) {
-                // Ana menüdeysek 2 kez basınca çık
-                backCount++;
-                if (backCount >= 2) tizen.application.getCurrentApplication().exit();
-                setTimeout(function() { backCount = 0; }, 1000);
-            } else {
-                // Sitedeysek ana menüye (GitHub'a) geri dön
-                window.location.href = "https://honykeru-cpu.github.io/wi-ra-cinema.com/index.html";
-            }
-            break;
-    }
-    x = Math.max(10, Math.min(window.innerWidth - 60, x));
-    y = Math.max(10, Math.min(window.innerHeight - 60, y));
-    cursor.style.left = x + 'px';
-    cursor.style.top = y + 'px';
-});
-
-// Sayfa her yüklendiğinde imleci hazırla
-window.onload = createCursor;
+    // Sayfa yüklendikten sonra ilk odaklanacak öğeyi ayarla
+    // Bu, sol menüdeki ilk link veya ana afişin üzerindeki "Şimdi İzle" butonu olabilir.
+    setTimeout(() => {
+        const firstFocusableElement = document.querySelector('a[tabindex="0"], button[tabindex="0"]');
+        if (firstFocusableElement) {
+            firstFocusableElement.focus();
+            console.log("İlk öğeye odaklandı.");
+        }
+    }, 100); // Küçük bir gecikme, DOM'un tam yüklenmesi için
+};
