@@ -1,1 +1,41 @@
-bkjbbk.vbn
+body { 
+    background-color: #141414; 
+    color: white; 
+    margin: 0; 
+    cursor: none !important; /* Standart oku gizle */
+}
+
+/* Şık Parlayan Sarı İmleç */
+#custom-cursor {
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 215, 0, 0.8); /* Sarı */
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    box-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700; /* Parlama efekti */
+}
+
+/* 4 Sitemizin Kutucukları */
+.site-grid {
+    display: block; /* grid yerine daha uyumlu bir yapı */
+    padding: 50px;
+}
+
+.site-card {
+    display: inline-block;
+    width: 45%;
+    margin: 2%;
+    background: #222;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+    text-decoration: none;
+    color: white;
+}
+
+.site-card:hover {
+    border: 3px solid #00e0ff; /* Turkuaz Çerçeve */
+    transform: scale(1.05);
+}
