@@ -1,12 +1,15 @@
+// Reklam Engelleyici Motoru
 function initAdBlocker() {
-    const filters = ["ads", "doubleclick", "analytics", "popunder", "googlesyndication", "adservice"];
+    console.log("WiRa AdBlocker Başlatıldı...");
+    const adDomains = ["doubleclick.net", "google-analytics.com", "ads.youtube.com", "popads.net"];
+    
+    // Ağ isteklerini takip eder ve reklamları durdurur
     const originalOpen = XMLHttpRequest.prototype.open;
     XMLHttpRequest.prototype.open = function(method, url) {
-        if (filters.some(f => url.includes(f))) {
-            console.log("REKLAM ENGELLENDI: " + url);
-            return;
+        if (adDomains.some(domain => url.includes(domain))) {
+            console.warn("Reklam Engellendi: " + url);
+            return; 
         }
         originalOpen.apply(this, arguments);
     };
-    console.log("WiRa AdBlocker aktif.");
 }
